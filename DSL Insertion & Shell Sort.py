@@ -3,6 +3,19 @@
 # a) Insertion sort
 # b) Shell Sort and display top five scores
 
+def insertion_sort(sort_list):
+    # key = arr.array('i', [])
+    for i in range(1, len(sort_list)):
+        key = sort_list[i]
+        j = i - 1
+        while j >= 0 and key < sort_list[j]:
+            sort_list[j + 1] = sort_list[j]
+            j -= 1
+        sort_list[j + 1] = key
+    print("\nPercentage of Students by Insertion Sort: ")
+    for i in range(len(sort_list)):
+        print(sort_list[i])
+
 def shellsort(arr,n):
     gap=n//2
     while gap>0:
@@ -14,17 +27,9 @@ def shellsort(arr,n):
                 j=j-gap
             arr[j]=temp
         gap=gap//2
-    print("Percentage of Students by Shell Sort: ", arr)
-
-def insertion_sort(sort_list):
-    for i in range(1, len(sort_list)):
-        key = sort_list[i]
-        j = i - 1
-        while j >= 0 and key < sort_list[j]:
-            sort_list[j + 1] = sort_list[j]
-            j -= 1
-        sort_list[j + 1] = key
-    print("\nPercentage of Students by Insertion Sort: ", sort_list)
+    print("Percentage of Students by Shell Sort: ")
+    for i in range(len(arr)):
+        print(arr[i])
 
 def top_five_marks(s):
     print("Top Five Marks are : ")
@@ -33,9 +38,10 @@ def top_five_marks(s):
     #     print(marks[i])
     print(s[-1:-6:-1])
 
+import array as arr
 
 n=int(input("Enter Total number of students: "))
-s=[]
+s=arr.array('i',[])
 print(f"Enter Percentage of {n} Students: ")
 for i in range(n):
     s.append(int(input()))
