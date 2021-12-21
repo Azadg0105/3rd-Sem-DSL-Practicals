@@ -1,41 +1,50 @@
-#Python program to store marks scored by 'n' number of students in a subject
-# Calculate:
-# 1. Sum of marks obtained
-# 2. Average score of class
-# 3. Maximum and Minimum marks scored
-# 4. Marks with highest Frequency
+# A-2 Write a Python program to store marks scored in subject “Fundamental of Data Structure” by N students
+# in the class. Write functions to compute following:
+# a)	The average score of class
+# b)	Highest score and lowest score of class
+# c)	Count of students who were absent for the test
+# d)	Display mark with highest frequency
 
-
-noofstud = int(input("Enter no. of students in class: "))
-
+noofstud = int(input("Enter Number of Students in Class: "))
 list1 = []
 for i in range(noofstud):
-    marks = int(input(f"Enter marks of Roll no. {i+1} : "))
-    list1.append(marks)
+    list1.append(int(input((f"Enter marks of Roll No.{i+1} (-1 for absent): "))))
 
-#To find Sum of Marks
-sum = 0
-for i in range(len(list1)):
-    sum = sum+list1[i]
-print("Sum of marks is ", sum)
-
-#To find Average score
-sum += list1[i]
-avg = sum/len(list1)
-print("Average Marks obtained are: ", avg)
-
-#Maximum marks obtained
-print("Maximum marks obtained are: ", max(list1))
-
-#Minimum marks obtained
-print("Minimum marks obtained are: ", min(list1))
-
-#To find frequent marks obtained
-x = 0
-res = list1[0]
+# Remove absents from list
+marks = []
+absent = []
 for i in list1:
-    freq = list1.count(i)
-    if freq > x:
-        x = freq
-        res = i
-print("Most Frequent marks is: " + str(res))
+    if i != -1:
+        marks.append(i)
+    else:
+        absent.append(i)
+
+# average score
+sum = 0
+for i in list1:
+    sum += i
+avg = sum/len(marks)
+print("\nAverage Score of Class: ",avg)
+
+# Maximum and Minimum 
+max = 0
+min = marks[0]
+for i in marks:
+    if i > max:
+        max = i
+    elif i < min:
+        min = i
+print("\nHighest Score of Class: ", max)
+print("Lowest Score of Class: ", min)
+
+print("\nNumber of Students absent for test: ", absent.count(-1))
+
+# Highest frequency
+x = 0
+freq = marks[0]
+for i in marks:
+    temp = marks.count(i)
+    if temp > x:
+        freq = i
+        x = temp
+print("\nMarks with Highest Frequency: ",freq)
