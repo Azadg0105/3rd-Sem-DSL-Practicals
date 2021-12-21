@@ -38,8 +38,10 @@ def top_five_marks(marks):
     #     print(marks[i])
     print(marks[-1:-6:-1])
 
+ 
+import array as arr
 
-marks = []
+marks = arr.array('i',[])
 n = int(input("Enter Number of Students whose marks are to be Displayed : "))
 print("Enter marks for ",n," Students: ")
 for i in range(0, n):
