@@ -1,88 +1,82 @@
-# Selection Sort of elements
+# Write a Python program to store first year percentage of students in array.
+# Write function for sorting array of floating point numbers in ascending order using
+# a)Selection Sort
+# b) Bubble sort and display top five scores.
 
-def Selection_Sort(marks):
+
+# Selection Sort :
+def Selec_Sort(marks):
     for i in range(len(marks)):
-        # Find the minimum element in remaining unsorted array
-        min_idx = i
+        min = i
         for j in range(i + 1, len(marks)):
-            if marks[min_idx] > marks[j]:
-                min_idx = j
+            if marks[min] > marks[j]:
+                min = j
+        marks[i], marks[min] = marks[min], marks[i]
 
-        # Swap the minimum element with the first element
-        marks[i], marks[min_idx] = marks[min_idx], marks[i]
-
-    print("Marks of students after performing Selection Sort on the list : ")
+    print("Marks of Students after performing Selection Sort : ")
     for i in range(len(marks)):
         print(marks[i])
 
-
-# Bubble Sort of elements
-
+# Bubble Sort :
 def Bubble_Sort(marks):
     n = len(marks)
-    # Traverse through all array elements
     for i in range(n - 1):
-        # Last i elements are already in place
         for j in range(0, n - i - 1):
-
-            # Traverse the array from 0 to n-i-1
-            # Swap if the element found is greater than the next element
             if marks[j] > marks[j + 1]:
                 marks[j], marks[j + 1] = marks[j + 1], marks[j]
 
-    print("Marks of students after performing Bubble Sort on the list :")
+    print("Marks of students after performing Bubble Sort :")
     for i in range(len(marks)):
         print(marks[i])
 
+# Top marks :
 
-# Displaying Top marks
+def top_five_marks(marks):
+    print("Top Five Marks are : ")
+    # marks.reverse()
+    # for i in range(5):
+    #     print(marks[i])
+    print(marks[-1:-6:-1])
 
-def top_marks(marks):
-    print("Top",len(marks),"Marks are : ")
-    print(*marks[::-1], sep="\n")
 
-
-
-marks=[]
-n = int(input("Enter number of students whose marks are to be displayed : "))
-print("Enter marks for ",n," students: ")
+marks = []
+n = int(input("Enter Number of Students whose marks are to be Displayed : "))
+print("Enter marks for ",n," Students: ")
 for i in range(0, n):
-    ele = int(input())
-    marks.append(ele)  # adding the element
-print("The marks of",n,"students are : \n",marks)
+    marks.append(int(input()))
+print("The Marks of ",n," Students are : \n",marks)
 
-
-flag=1
-while flag==1:
-    print("\n---------------MENU---------------")
-    print("1. Selection Sort of the marks")
-    print("2. Bubble Sort of the marks")
+rev=1
+while rev==1:
+    print("\nMENU")
+    print("\n1. Selection Sort of the Marks")
+    print("2. Bubble Sort of the Marks")
     print("3. Exit")
-    choice = int(input("\n\nEnter your choice (from 1 to 3) : "))
+    ch=int(input("\nEnter your choice : "))
 
-    if choice == 1:
-        Selection_Sort(marks)
-        a = input("\nDo you want to display top marks from the list (yes/no) : ")
-        if a == 'yes':
-            top_marks(marks)
+    if ch==1:
+        Selec_Sort(marks)
+        a=input("Display Top Five Marks from the List (yes/no) : ")
+        if a=='yes':
+            top_five_marks(marks)
         else:
             print("\nThanks for using this program..!!")
-            flag = 0
+            rev=0
 
-    elif choice == 2:
+    elif ch==2:
         Bubble_Sort(marks)
-        a = input("\nDo you want to display top five marks from the list (yes/no) : ")
-        if a == 'yes':
-            top_marks(marks)
+        a=input("Display Top Five Marks from the list (yes/no) : ")
+        if a=='yes':
+            top_five_marks(marks)
         else:
             print("\nThanks for using this program..!!")
-            flag = 0
+            rev=0
 
-    elif choice == 3:
+    elif ch==3:
         print("\nThanks for using this program..!!")
-        flag = 0
+        rev=0
 
     else:
         print("\nEnter a valid choice!!")
         print("\nThanks for using this program..!!")
-        flag = 0
+        rev=0
