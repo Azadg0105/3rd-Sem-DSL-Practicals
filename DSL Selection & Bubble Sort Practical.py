@@ -36,7 +36,9 @@ def top_five_marks(marks):
     # marks.reverse()
     # for i in range(5):
     #     print(marks[i])
-    print(marks[-1:-6:-1])
+    x = marks[-1:-6:-1]
+    for i in range(len(x)):
+        print(x[i])
 
  
 import array as arr
