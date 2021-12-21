@@ -1,61 +1,59 @@
-element = input("Enter the String: ")
-char=input("Enter the character whose occurence you want to find: ")
-count=0
-counter=0
-# To check length of string
-for i in range(len(element)):
-  count=count+1
-print("Length of string:",count)
-print()
-# occurence of Character in string
-counter=0
-for i in range(len(element)):
-  if char==element[i]:
-    counter+=1
-print("occurence of Character in string:",counter)
-print()
-# STRING IS PALINDROME OR NOT
-if (element  == element [::-1]):
- print("The given string is palindrome")
+# A-5 Write a Python program to compute following operations on String:
+# a)	To display word with the longest length
+# b)	To determines the frequency of occurrence of particular character in the string
+# c)	To check given string is palindrome or not
+# d)	To display index of first substring
+# e)	To count the occurrences of each word in string
+
+str = input("Enter a String: ")
+
+# Longest length
+s = str.split()
+a = 0
+for i in range(len(s)):
+    if a < len(s[i]):
+        a = len(s[i])
+        b = s[i]
+print(f"\nThe Longest word is '{b}' of Length {a}.")
+
+# frequency of occurances
+occ = input("\nEnter a character to find it's Frequency: ")
+x = 0
+for i in str:
+    if i == occ:
+        x += 1
+    else:
+        continue
+print(f"Character '{occ}' occured {x} times in given String.")
+
+# palindrome or not
+pal = input("\nEnter a String to check whether Palindrome or not: ")
+rev = pal[::-1]
+if rev == pal:
+    print("Given String is a Palindrome!")
 else:
- print("The given string is not palindrome")
-print()
-# find word with longest length
-element2=input("Enter string to find word with longest length:")
-list=element2.split()
-z=0
-for i in range(len(list)):
-  len(list[i])
-  if z< len(list[i]):
-    z=len(list[i])
-    word=i
-print("\nThe Word With Longest Length is:", list[word])
-print()
-#occurence of word
-element3=input(" Enter string to count occurence of word :")
-total=dict()
-words=element3.split()
-for i in words:
-  if i in total:
-    total[i]+=1
-  else:
-    total[i]=1
-print(total)
-print()
-#To display index of first appearance of substring
-element4=input(" Enter string to display index of first appearance of substring:")
-element5=input(" Enter substring:")
-sublen=len(element5 )
-x=0
-y=0
-for i in range(len(element4)):
-  if element5[y]==element4[i]:
-    sub=1
-    y=y+1
-    if y==sublen:
-      x=i-(sublen-1)
-      break
-  else:
-     sub=0
-     y=0
-print("index of sunstring is:",x)
+    print("Given String is not a Palindrome!")
+
+# index of first substring
+substr = input("\nEnter a Substring to find it's Position: ")
+j = 0
+for i in range(len(str)-1):
+    if len(substr) == 0:
+        break
+    if str[i] == substr[j]:
+        j += 1
+        if j == len(substr):
+            break
+if j < len(substr):
+    print(f"'{substr}' is not Present in a given String.")
+else:
+    k = i-j+1
+    print(f"'{substr}' is Present at Index {k}")
+
+# occurance of word
+word = input("\nEnter a word to find its Occurance: ")
+cnt = 0
+for i in s:
+    if i == word:
+        cnt += 1
+print(f"The word '{word}' occurred {cnt} time(s) in String.")
